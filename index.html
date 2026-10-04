@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Yeah Wow Hey Like</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #000;
+        touch-action: none; /* Prevent scroll/zoom on mobile */
+      }
+      #game-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100dvh;
+        z-index: 1;
+      }
+      #ui-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100dvh;
+        z-index: 10;
+        pointer-events: none; /* Let touches pass through to specific UI elements */
+      }
+      #joystick-zone {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        width: 150px;
+        height: 150px;
+        pointer-events: auto;
+      }
+      .action-buttons {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        pointer-events: auto;
+      }
+      .btn {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.5);
+        border: 2px solid #fff;
+        color: #000;
+        font-weight: bold;
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        user-select: none;
+      }
+      .btn:active {
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+      #hud {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-family: monospace;
+        font-size: 24px;
+        text-shadow: 2px 2px 0 #000;
+        text-align: center;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-container"></div>
+    <div id="ui-layer">
+      <div id="hud">
+        <div id="timer">00:00.00</div>
+        <div id="altitude">Alt: 0m</div>
+      </div>
+      <div id="clear-message" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: gold; font-size: 48px; font-weight: bold; font-family: sans-serif; text-shadow: 2px 2px 4px #000, -2px -2px 4px #000, 2px -2px 4px #000, -2px 2px 4px #000; text-align: center; pointer-events: none; z-index: 20;">
+        CLEAR!<br><span id="clear-time" style="font-size: 32px; color: white;"></span>
+      </div>
+      <div id="joystick-zone"></div>
+      <div class="action-buttons">
+        <div class="btn" id="btn-action">ACT</div>
+        <div class="btn" id="btn-dash">DASH</div>
+        <div class="btn" id="btn-jump">JUMP</div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
